@@ -1,0 +1,512 @@
+x<-matrix(c(0,0,1,0,0,1,0,1) , nrow =4)
+x
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+w1<-matrix(c(5, 5, -7, -7), nrow=2)
+b1<-matrix(c(-8, -8, -8, -8, 3, 3, 3, 3), nrow=4)
+w2<-matrix(c(-11, -11), nrow=2)
+b2<-6
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+y
+x
+w1
+b1
+w2
+w1<-matrix(2*runif(6)-1, nrow=3)
+w1
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+w1
+w2
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:1){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+deltaH<-deltaH[,1:2]
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:1){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:100){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+y
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:1000){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+y
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:10000){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+y
+Sigmoid<-function(x) {
+return (1/(1+exp(-x)))
+}
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:100){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+}
+y
+Sigmoid<-function(x) {
+return (1/(1+exp(-x)))
+}
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:100){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+b1<-b1-lambda*deltaH
+b2<-b2-lambda*deltaY
+}
+y
+Sigmoid<-function(x) {
+return (1/(1+exp(-x)))
+}
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:1){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+b1<-b1-lambda*deltaH
+b2<-b2-lambda*deltaY
+}
+y
+Sigmoid<-function(x) {
+return (1/(1+exp(-x)))
+}
+lambda<-1
+x<-matrix(c(0,0,1,1,0,1,0,1) , nrow =4)
+t<-c(0,1,1,0)
+w1<-matrix(2*runif(4)-1, nrow=2)
+w2<-matrix(2*runif(2)-1, nrow=2)
+b1<-matrix(c(0,0,0,0,0,0,0,0), nrow=4)
+b2<-0
+for(i in 1:100){
+h<-x %*% w1 + b1
+h<-Sigmoid(h)
+y<-h %*% w2 + b2
+y<-Sigmoid(y)
+deltaY<-(y-t)*y*(1-y)
+deltaH<-deltaY%*%t(w2)*(h*(1-h))
+w2<-w2-t(h)%*%(lambda*deltaY)
+w1<-w1-t(x)%*%(lambda*deltaH)
+b1<-b1-lambda*deltaH
+b2<-b2-lambda*deltaY
+}
+y
+mnist_train<-read.csv("D:/lecture/DataMining/Mnist/mnist_train.csv", header = FALSE)
+names(mnist_train)[1]<-paste("y")
+View(mnist_train)
+mnist_test<-read.csv("D:/lecture/DataMining/Mnist/mnist_test.csv", header = FALSE)
+names(mnist_test)[1]<-paste("y")
+normalize <- function(x) {return(x/255)}
+library(h2o)
+h2o.init()
+MnistTrainNorm <- as.data.frame(lapply(mnist_train[,-1], normalize))
+MnistTrainNorm$y <- as.factor(mnist_train$y)
+MnistTestNorm <- as.data.frame(lapply(mnist_test[,-1], normalize))
+keeps<-paste("V", c(154:161, 180:190, 207:219, 234:247, 262:275, 290:303, 318:331,
+345:358, 373:386, 401:414, 429:443, 457:471, 485:498, 513:526,
+541:554, 569:581, 597:609, 626:635, 655:662, 685:687), sep="")
+keeps1<- append("y",keeps)
+samp <- c(sample(1:60000,10000))
+MnistTrainNorm<-MnistTrainNorm[samp,keeps1]
+MnistTestNorm<-MnistTestNorm[,keeps]
+tr.hex <- as.h2o(MnistTrainNorm)
+te.hex <- as.h2o(MnistTestNorm)
+mnist.dl <- h2o.deeplearning(x = 2:250, y = 1, training_frame = tr.hex, hidden = c(50,50), epochs = 50)
+predictions <- h2o.predict(mnist.dl, te.hex)
+pred<-as.data.frame(predictions)
+View(pred)
+View(pred)
+library(OpenImageR)
+mnist_test<-read.csv("D:/lecture/DataMining/Mnist/mnist_test.csv", header = FALSE)
+names(mnist_test)[1]<-paste("y")
+a<-as.numeric(mnist_test[2,2:785])
+m <- matrix(a, nrow=28, ncol=28)
+m <- t(m)
+m1<-rotateImage(m, 270)
+image(m1)
+View(mnist_test)
+a<-as.numeric(mnist_test[1,2:785])
+m <- matrix(a, nrow=28, ncol=28)
+m <- t(m)
+m1<-rotateImage(m, 270)
+image(m1)
+mnist_train<-read.csv("D:/lecture/DataMining/Mnist/mnist_train.csv", header = FALSE)
+names(mnist_train)[1]<-paste("y")
+mnist_test<-read.csv("D:/lecture/DataMining/Mnist/mnist_test.csv", header = FALSE)
+names(mnist_test)[1]<-paste("y")
+library(nnet)
+normalize <- function(x) {return(x/255)}
+MnistTrainNorm <- as.data.frame(lapply(mnist_train[,-1], normalize))
+MnistTrainNorm$y <- as.factor(mnist_train$y)
+MnistTestNorm <- as.data.frame(lapply(mnist_test[,-1], normalize))
+library(caret)
+keeps<-paste("V", c(154:161, 180:190, 207:219, 234:247, 262:275, 290:303, 318:331,
+345:358, 373:386, 401:414, 429:443, 457:471, 485:498, 513:526,
+541:554, 569:581, 597:609, 626:635, 655:662, 685:687), sep="")
+keeps1<- append("y",keeps)
+samp <- c(sample(1:60000,10000))
+MnistTrainNorm<-MnistTrainNorm[samp,keeps1]
+MnistTestNorm<-MnistTestNorm[,keeps]
+memory.limit(40000)
+t.start <- Sys.time()
+nnModel <- nnet(y~., data=MnistTrainNorm, size = 50, MaxNWts=39301)
+t.end <- Sys.time()
+y<-as.factor(mnist_test$y)
+p<- predict(nnModel, MnistTestNorm, type="class")
+table(y,p)
+sum(diag(table(y,p)))/sum(table(y,p))
+train.mat <- data.matrix(mnist_train[,keeps])
+test.mat <- data.matrix(mnist_test[,keeps])
+y.train <- as.factor(train.mat[,1])
+image.train <- train.mat[, -1]
+y.test <- as.factor(test.mat[,1])
+image.test <- test.mat[, -1]
+image.train <- image.train/255
+image.test <- image.test/255
+outnode.train <- model.matrix( ~ y.train -1)
+outnode.test <- model.matrix( ~ y.test -1)
+library(deepnet)
+rm(test.mat); rm(train.mat)
+t.start <- Sys.time()
+nn <- nn.train(image.train,outnode.train,
+hidden=c(50,15),
+output="softmax",
+batchsize=100, numepochs=10, learningrate = 0.1)
+t.end <- Sys.time()
+train.pred <- nn.predict(nn, image.train)
+train.pred.num <- apply(train.pred, 1, function(x) which(max(x)==x))-1
+sum(y.train==train.pred.num)/length(train.pred.num)
+test.pred <- nn.predict(nn, image.test)
+test.pred.num <- apply(test.pred, 1, function(x) which(max(x)==x))-1
+sum(y.test==test.pred.num)/length(test.pred.num)
+train.mat <- data.matrix(mnist_train[,keeps])
+test.mat <- data.matrix(mnist_test[,keeps])
+y.train <- as.factor(train.mat[,1])
+image.train <- train.mat[, -1]
+y.test <- as.factor(test.mat[,1])
+image.test <- test.mat[, -1]
+image.train <- image.train/255
+image.test <- image.test/255
+outnode.train <- model.matrix( ~ y.train -1)
+outnode.test <- model.matrix( ~ y.test -1)
+library(deepnet)
+rm(test.mat); rm(train.mat)
+t.start <- Sys.time()
+nn <- nn.train(image.train,outnode.train,
+hidden=c(50,15),
+output="softmax",
+batchsize=100, numepochs=10, learningrate = 0.1)
+t.end <- Sys.time()
+train.pred <- nn.predict(nn, image.train)
+train.pred.num <- apply(train.pred, 1, function(x) which(max(x)==x))-1
+sum(y.train==train.pred.num)/length(train.pred.num)
+test.pred <- nn.predict(nn, image.test)
+test.pred.num <- apply(test.pred, 1, function(x) which(max(x)==x))-1
+sum(y.test==test.pred.num)/length(test.pred.num)
+summary(irisPCA)
+data(iris)
+head(iris)
+cor(iris[1:4])
+irisLogData <- log(iris[1:4])
+irisSpecies <- iris[,5]
+irisPCA <- prcomp(irisLogData, center=T, scale=T)
+print(irisPCA)
+plot(irisPCA)
+summary(irisPCA)
+S <- cov(irisLogData)
+E <- eigen(S)
+E$values
+S <- cor(irisLogData)
+E <- eigen(S)
+E$values
+E$vectors
+Diagonal(E$values)
+diag(E$values)
+L <- diag(E$values)
+V <- E$vectors
+t(V) %*% L %*% V
+S
+S <- cor(irisLogData)
+E <- eigen(S)
+E$values
+L <- diag(E$values)
+V <- E$vectors
+t(V) %*% L %*% V
+S
+V %*% L %*% t(V)
+print(irisPCA)
+data(iris)
+head(iris)
+cor(iris[1:4])
+irisScaled <- scale(iris[1:4], center = TRUE, scale = TRUE)
+irisSpecies <- iris[,5]
+irisPCA <- prcomp(irisScaled, center=T, scale=T)
+print(irisPCA)
+plot(irisPCA)
+summary(irisPCA)
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+irisPC
+irisPC <- t(irisPC)
+irisPC
+cor(irisPC)
+print(irisPCA)
+V
+data(iris)
+head(iris)
+cor(iris[1:4])
+irisScaled <- scale(iris[1:4], center = TRUE, scale = TRUE)
+irisSpecies <- iris[,5]
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+irisPC <- t(irisPC)
+colnames(irisPC) <- c("PC1", "PC2", "PC3", "PC4")
+cor(irisPC)
+irisPCA <- prcomp(irisScaled, center=T, scale=T)
+print(irisPCA)
+plot(irisPCA)
+summary(irisPCA)
+View(irisPC)
+data(iris)
+head(iris)
+cor(iris[1:4])
+irisPCA <- prcomp(iris[1:4])
+print(irisPCA)
+plot(irisPCA)
+summary(irisPCA)
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S <- cor(iris[1:4])
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+irisPC <- t(irisPC)
+irisPC <- t(V) %*% t(iris[1:4])
+irisPC <- t(irisPC)
+colnames(irisPC) <- c("PC1", "PC2", "PC3", "PC4")
+cor(irisPC)
+View(irisPC)
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+S <- cor(irisScaled)
+E <- eigen(S)
+irisScaled <- scale(iris[1:4], center = TRUE, scale = TRUE)
+irisSpecies <- iris[,5]
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+irisPC <- t(irisPC)
+View(irisPC)
+data(iris)
+head(iris)
+cor(iris[1:4])
+irisScaled <- scale(iris[1:4], center = TRUE, scale = TRUE)
+irisScaled <- scale(iris[1:4])
+irisSpecies <- iris[,5]
+S <- cor(irisScaled)
+E <- eigen(S)
+L <- diag(E$values)
+V <- E$vectors
+V %*% L %*% t(V)
+S
+irisPC <- t(V) %*% t(irisScaled)
+irisPC <- t(irisPC)
+View(irisPC)
+qnorm(0.1)
+qnorm(0.25)
+plot(cars)
+x <- c(2.5,0.5,2.2,1.9,3.1,2.3,2,1,1.5,1.1)
+y <- c(2.4,0.7,2.9,2.2,3.0,2.7,1.6,1.1,1.6,0.9)
+as.matrix(x,y)
+x <- c(2.5,0.5,2.2,1.9,3.1,2.3,2,1,1.5,1.1)
+y <- c(2.4,0.7,2.9,2.2,3.0,2.7,1.6,1.1,1.6,0.9)
+as.matrix(x,y, nrow=10)
+X <- as.matrix(x,y, nrow=10)
+X
+X <- matrix(c(x,y), nrow=10)
+X
+cor(Xz)
+cor(X)
+scale(X)
+x <- c(2.5,0.5,2.2,1.9,3.1,2.3,2,1,1.5,1.1)
+y <- c(2.4,0.7,2.9,2.2,3.0,2.7,1.6,1.1,1.6,0.9)
+x <- x - mean(x)
+y <- y - mean(y)
+X <- matrix(c(x,y), nrow=10)
+scale(X)
+x <- c(2.5,0.5,2.2,1.9,3.1,2.3,2,1,1.5,1.1)
+y <- c(2.4,0.7,2.9,2.2,3.0,2.7,1.6,1.1,1.6,0.9)
+x <- x - mean(x)
+y <- y - mean(y)
+X <- matrix(c(x,y), nrow=10)
+scale(X)
+x
+X <- matrix(c(x,y), nrow=10)
+X
+cov(X)
+lambda <- eigen(S)
+S <- cov(X)
+lambda <- eigen(S)
+lambda
+lambda$vectors
+lambda$vectors %*% t(X)
+newX <- lambda$vectors %*% t(X)
+newX
+t(newX)
+setwd("C:\\Users\\SWKim\\OneDrive\\전산통계\\data")
+teens <- read.csv("snsdata.csv")
+str(teens)
+table(teens$gender)
+table(teens$gender, useNA = "ifany")
+summary(teens$age)
+teens$age <- ifelse(teens$age >= 13 & teens$age < 20,
+teens$age, NA)
+summary(teens$age)
+teens$female <- ifelse(teens$gender == "F" &
+!is.na(teens$gender), 1, 0)
+teens$no_gender <- ifelse(is.na(teens$gender), 1, 0)
+table(teens$gender, useNA = "ifany")
+table(teens$female, useNA = "ifany")
+table(teens$no_gender, useNA = "ifany")
+mean(teens$age) # doesn't work
+mean(teens$age, na.rm = TRUE) # works
+aggregate(data = teens, age ~ gradyear, mean, na.rm = TRUE)
+ave_age <- ave(teens$age, teens$gradyear,
+FUN = function(x) mean(x, na.rm = TRUE))
+teens$age <- ifelse(is.na(teens$age), ave_age, teens$age)
+summary(teens$age)
+interests <- teens[5:40]
+View(interests)
+interests_z <- as.data.frame(lapply(interests, scale))
+View(interests_z)
+teen_clusters <- kmeans(interests_z, 5)
+teen_clusters$size
+teen_clusters <- kmeans(interests_z, 5)
+teen_clusters$size
